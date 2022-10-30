@@ -1,18 +1,40 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="home">
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import {axisHelper, init, rend} from "@/utils/threeD";
+import {addCylinder, addSphere} from "@/utils/threeD/addGeometry";
+import {addAudio, bindAudioToModel} from "@/utils/threeD/addAudio";
 
 export default {
   name: "Home",
-  components: {
-    HelloWorld,
+  data(){
+    return{
+
+    }
   },
+  methods:{
+    initWorld(){
+      const dom = document.getElementById("home")
+      init(dom)
+      // rend(bindAudioToModel)
+      axisHelper()
+      addSphere()
+      addCylinder()
+      addAudio()
+
+    },
+
+  },
+  mounted() {
+    this.initWorld()
+  }
 };
 </script>
+
+<style scoped>
+
+</style>
